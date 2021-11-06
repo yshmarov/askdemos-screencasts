@@ -1,1 +1,1 @@
-json.array! @inboxes, partial: "inboxes/inbox", as: :inbox
+json.array! @inboxes, partial: 'inboxes/inbox', as: :inbox

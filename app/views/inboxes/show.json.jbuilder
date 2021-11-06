@@ -1,1 +1,1 @@
-json.partial! "inboxes/inbox", inbox: @inbox
+json.partial! 'inboxes/inbox', inbox: @inbox
