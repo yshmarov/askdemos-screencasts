@@ -8,4 +8,7 @@ class Inbox < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: true
   validates :name, length: { in: MIN_NAME..MAX_NAME }
+
+  extend FriendlyId
+  friendly_id :name, use: %i[slugged finders]
 end

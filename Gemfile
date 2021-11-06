@@ -73,3 +73,5 @@ gem 'devise', github: 'heartcombo/devise', branch: 'main'
 gem 'acts_as_votable'
 
 gem "pundit", "~> 2.1"
+
+gem "friendly_id", "~> 5.4"
