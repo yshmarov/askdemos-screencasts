@@ -6,3 +6,15 @@
 
   <%= button_to "Destroy this inbox", inbox_path(@inbox), method: :delete %>
 </div>
+
+<hr>
+
+<h1>
+  Messages
+  <%= @inbox.messages.length %>
+</h1>
+
+<%#= link_to 'New Message', new_inbox_message_path(@inbox) %>
+<%= link_to 'New Message', [:new, @inbox, :message] %>
+
+<%= render partial: 'inboxes/messages/message', collection: @inbox.messages %>
