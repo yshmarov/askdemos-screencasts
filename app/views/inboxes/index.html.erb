@@ -1,7 +1,8 @@
-<h1>Inbox</h1>
+<h1>
+  Inboxes:
+  <%= @inboxes.count %>
+</h1>
 
 <div id="inboxes">
   <%= render @inboxes %>
 </div>
-
-<%= link_to "New inbox", new_inbox_path %>

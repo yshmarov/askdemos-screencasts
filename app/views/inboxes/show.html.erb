@@ -1,16 +1,7 @@
 <%= render @inbox %>
 
-<div>
-  <%= link_to "Edit this inbox", edit_inbox_path(@inbox) %> |
-  <%= link_to "Back to inboxes", inboxes_path %>
-
-  <%= button_to "Destroy this inbox", inbox_path(@inbox), method: :delete %>
-</div>
-
-<hr>
-
 <h1>
-  Messages
+  Messages:
   <%= @inbox.messages.length %>
 </h1>
 
