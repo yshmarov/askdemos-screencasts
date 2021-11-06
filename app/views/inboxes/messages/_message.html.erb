@@ -10,6 +10,17 @@
     <%= link_to message.inbox.name, message.inbox %>
   </p>
 
+  <%= button_to 'Upvote',
+                [:upvote, @inbox, message],
+                method: :patch %>
+  <%= message.cached_votes_total %>
+  <%= message.cached_votes_score %>
+  <%= message.cached_votes_up %>
+  <%= message.cached_votes_down %>
+  <%= message.cached_weighted_score %>
+  <%= message.cached_weighted_total %>
+  <%= message.cached_weighted_average %>
+
   <p>
     <strong>User:</strong>
     <%= message.user.email %>
