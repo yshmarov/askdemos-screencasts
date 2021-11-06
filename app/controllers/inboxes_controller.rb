@@ -1,6 +1,6 @@
 class InboxesController < ApplicationController
   before_action :set_inbox, only: %i[show edit update destroy]
-  before_action :authorize_inbox, only: %i[edit update destory]
+  before_action :authorize_inbox, only: %i[edit update destroy]
 
   def index
     @inboxes = Inbox.all
