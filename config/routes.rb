@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-  # Almost every application defines a route for the root path ("/") at the top of this file.
-  # root "articles#index"
+  root 'static_pages#landing_page'
+  get 'pricing', to: 'static_pages#pricing'
+  get 'privacy', to: 'static_pages#privacy'
+  get 'terms', to: 'static_pages#terms'
 end
