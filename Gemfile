@@ -45,6 +45,7 @@ gem "bootsnap", ">= 1.4.4", require: false
 group :development, :test do
   # Start debugger with binding.b [https://github.com/ruby/debug]
   gem "debug", ">= 1.0.0", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rubocop-rails', require: false
 end
 
 group :development do
