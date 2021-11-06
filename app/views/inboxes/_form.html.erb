@@ -1,15 +1,5 @@
 <%= form_with(model: inbox) do |form| %>
-  <% if inbox.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(inbox.errors.count, "error") %> prohibited this inbox from being saved:</h2>
-
-      <ul>
-        <% inbox.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/errors', form: form %>
 
   <div class="field">
     <%= form.label :name %>
