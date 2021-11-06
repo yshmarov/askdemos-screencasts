@@ -1,4 +1,3 @@
 <% flash.each do |key, value| %>
-  <%= key %>
-  <%= value %>
+  <%= content_tag :div, value, id: "#{key}" %>
 <% end %>
