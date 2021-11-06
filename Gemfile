@@ -71,3 +71,5 @@ gem "faker", "~> 2.19"
 gem 'devise', github: 'heartcombo/devise', branch: 'main'
 
 gem 'acts_as_votable'
+
+gem "pundit", "~> 2.1"
