@@ -1,4 +1,6 @@
 class Inbox < ApplicationRecord
+  belongs_to :user
+  
   MIN_NAME = 6
   MAX_NAME = 100
 
