@@ -1,17 +1,17 @@
 <div id="<%= dom_id message %>" class="scaffold_record">
   <p>
     <strong>Body:</strong>
-    <%= message.body %>
+    <%= simple_format(message.body) %>
   </p>
 
   <p>
     <strong>Inbox:</strong>
-    <%= message.inbox_id %>
+    <%= link_to message.inbox.name, message.inbox %>
   </p>
 
   <p>
     <strong>User:</strong>
-    <%= message.user_id %>
+    <%= message.user.email %>
   </p>
 
   <p>
