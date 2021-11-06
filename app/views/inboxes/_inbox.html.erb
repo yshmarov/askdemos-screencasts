@@ -6,6 +6,10 @@
   <%= link_to "Edit this inbox", edit_inbox_path(inbox) %>
   <%= button_to "Destroy this inbox", inbox_path(inbox), method: :delete %>
 
+  Messages:
+  <%= inbox.messages_count %>
+  <br>
+
   <i>
     by
     <%= inbox.user.email %>

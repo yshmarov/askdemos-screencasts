@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-  belongs_to :inbox
+  belongs_to :inbox, counter_cache: true
   belongs_to :user
 
   MIN_BODY = 6
