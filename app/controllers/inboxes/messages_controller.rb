@@ -1,9 +1,9 @@
 module Inboxes
   class MessagesController < ApplicationController
     before_action :set_inbox
+    before_action :set_message, only: %i[change_status upvote]
 
     def change_status
-      @message = @inbox.messages.find(params[:id])
       @message.update(status: params[:status])
       flash.now[:notice] = "Status for message #{@message.id}: #{@message.status}"
       respond_to do |format|
@@ -19,7 +19,6 @@ module Inboxes
     end
 
     def upvote
-      @message = @inbox.messages.find(params[:id])
       flash.now[:notice] = 'Voted!'
       @message.upvote! current_user
       respond_to do |format|
@@ -81,6 +80,10 @@ module Inboxes
     end
 
     private
+
+    def set_message
+      @message = @inbox.messages.find(params[:id])
+    end
 
     def set_inbox
       @inbox = Inbox.find(params[:inbox_id])
