@@ -3,16 +3,23 @@ class InboxesController < ApplicationController
   before_action :authorize_inbox, only: %i[edit update destroy]
 
   def index
+    # set_meta_tags title: %w[Inboxes All]
+    # set_meta_tags title: "Inboxes"
+    set_meta_tags title: controller_name.capitalize
     @inboxes = Inbox.all
   end
 
-  def show; end
+  def show
+    set_meta_tags title: @inbox.name
+  end
 
   def new
+    set_meta_tags title: "#{action_name.capitalize} #{controller_name.capitalize.singularize}"
     @inbox = Inbox.new
   end
 
   def edit
+    set_meta_tags title: "#{action_name.capitalize} #{controller_name.capitalize.singularize}"
   end
 
   def create

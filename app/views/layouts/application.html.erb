@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= Rails.application.class.module_parent.name %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <%= display_meta_tags site: Rails.application.class.module_parent.name,
+                          description: 'Vote on lists or create your own list',
+                          keywords: 'qna, feedback',
+                          reverse: true %>
   </head>
 
   <body>
