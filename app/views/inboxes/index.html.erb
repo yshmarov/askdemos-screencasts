@@ -13,16 +13,18 @@
 <%= Time.zone.now %>
 <%= request.path %>
 
-<%= turbo_frame_tag 'search' do %>
+<%= turbo_frame_tag 'search', target: '_top' do %>
 
-<%= sort_link(@q, :name, default_order: :desc) %>
-<%= sort_link(@q, :created_at, default_order: :desc) %>
-<%= sort_link(@q, :messages_count, default_order: :desc) %>
+<%= sort_link @q, :name, {default_order: :desc}, { data: { turbo_frame: 'search'} } %>
+<%= sort_link @q, :created_at, {default_order: :desc}, { data: { turbo_frame: 'search'} } %>
+<%= sort_link @q, :messages_count, {default_order: :desc}, { data: { turbo_frame: 'search'} } %>
 
 <br>
 <%= Time.zone.now %>
 <%= request.path %>
-<%= link_to "Clear search", request.path if request.query_parameters.any? %>
+<%= link_to "Clear search",
+            request.path,
+            data: { turbo_frame: 'search'} if request.query_parameters.any? %>
 
 <div id="inboxes">
   <%= render @inboxes %>
