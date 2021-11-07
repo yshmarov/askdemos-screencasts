@@ -3,6 +3,20 @@
   <%= @inboxes.count %>
 </h1>
 
+<%= search_form_for @q, html: { autocomplete: "off"} do |f| %>
+  <%= f.label :name_cont %>
+  <%= f.search_field :name_cont %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= sort_link(@q, :name, default_order: :desc) %>
+<%= sort_link(@q, :created_at, default_order: :desc) %>
+<%= sort_link(@q, :messages_count, default_order: :desc) %>
+
+<%= request.path %>
+<%= link_to "Clear search", request.path if request.query_parameters.any? %>
+
 <div id="inboxes">
   <%= render @inboxes %>
 </div>

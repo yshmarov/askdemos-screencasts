@@ -6,7 +6,9 @@ class InboxesController < ApplicationController
     # set_meta_tags title: %w[Inboxes All]
     # set_meta_tags title: "Inboxes"
     set_meta_tags title: controller_name.capitalize
-    @inboxes = Inbox.all
+    # @inboxes = Inbox.all
+    @q = Inbox.ransack(params[:q])
+    @inboxes = @q.result(distinct: true).order(created_at: :desc)
   end
 
   def show

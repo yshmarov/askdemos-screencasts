@@ -80,3 +80,5 @@ gem "meta-tags", "~> 2.16"
 
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem "omniauth-rails_csrf_protection" # for omniauth 2.0
+
+gem 'ransack', github: 'activerecord-hackery/ransack'
