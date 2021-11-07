@@ -20,7 +20,8 @@ User.create!(email: 'admin@example.com', password: 'password') # lazy create new
 6.times do
   faker_email = Faker::Internet.unique.email
   user = User.create!(email: faker_email,
-                      password: Devise.friendly_token[0, 20])
+                      # password: Devise.friendly_token[0, 20]) # why?!!!
+                      password: 'password')
   print '.'
 
   rand(1..5).times do
