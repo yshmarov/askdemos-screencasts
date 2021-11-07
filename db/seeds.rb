@@ -7,11 +7,9 @@ User.delete_all
 
 # optional 1
 def check_uniq_message_body(message_body)
-  if Message.where(body: message_body).any?
-    Faker::Hipster.unique.paragraph + " Part: (#{Devise.friendly_token[0, 4]})"
-  else
-    message_body
-  end
+  return  "#{message_body} Part: (#{Devise.friendly_token[0, 4]})" if Message.where(body: message_body).any?
+
+  message_body
 end
 
 # optional 2
