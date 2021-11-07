@@ -3,7 +3,10 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name,
+                        autocomplete: 'off',
+                        style: 'width:100%;',
+                        maxlength: Inbox::MAX_NAME %>
   </div>
 
   <div class="actions">
