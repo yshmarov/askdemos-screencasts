@@ -5,6 +5,9 @@
   <%= @inbox.messages_count %>
 </h1>
 
+<div id="new_message">
+  <%= render 'inboxes/messages/form', message: Message.new %>
+</div>
 <%#= link_to 'New Message', new_inbox_message_path(@inbox) %>
 <%= link_to 'New Message', [:new, @inbox, :message] %>
 
