@@ -13,9 +13,13 @@
 
   <hr>
 
-  <%= button_to 'Upvote',
-                [:upvote, @inbox, message],
-                method: :patch %>
+  <%= button_to [:upvote, @inbox, message], method: :patch do %>
+    <% if current_user.voted_up_on? message, vote_scope: 'like' %>
+      UN-vote
+    <% else %>
+      UP-vote
+    <% end %>
+  <% end %>
   <%= message.cached_votes_total %>
   <%= message.cached_votes_score %>
   <%= message.cached_votes_up %>
