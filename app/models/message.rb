@@ -18,5 +18,4 @@ class Message < ApplicationRecord
       upvote_by user, vote_scope: 'like'
     end
   end
-
 end
