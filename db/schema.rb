@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_185612) do
+ActiveRecord::Schema.define(version: 2021_11_07_150255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_11_06_185612) do
     t.bigint "user_id", null: false
     t.integer "messages_count", default: 0, null: false
     t.string "slug"
+    t.string "theme_color", default: "#f5af00", null: false
     t.index ["name"], name: "index_inboxes_on_name", unique: true
     t.index ["slug"], name: "index_inboxes_on_slug", unique: true
     t.index ["user_id"], name: "index_inboxes_on_user_id"
