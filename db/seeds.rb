@@ -23,14 +23,16 @@ User.create!(email: 'admin@example.com', password: 'password') # lazy create new
   print '.'
 
   rand(1..5).times do
-    # faker_name = Faker::Quote.famous_last_words  # very-very long - bad idea!!!
+    # faker_name = Faker::Quote.famous_last_words  # bad idea: very-very long!!!
     faker_name = Faker::Name.unique.name_with_middle # like better! (e.g. "Gov. Aron Schumm Quitzon")
+    faker_name = faker_name.truncate(Inbox::MAX_NAME, separator: /\s/) # optional 3
     inbox = Inbox.create!(name: faker_name, user: user)
     print '.'
 
     rand(1..5).times do
       # message_body = Faker::Hipster.unique.paragraph # have limit uniq records
-      message_body = check_uniq_message_body(Faker::Hipster.unique.paragraph)  # optional 3
+      message_body = check_uniq_message_body(Faker::Hipster.unique.paragraph)  # optional 4
+      message_body = message_body.truncate(Message::MAX_BODY, separator: /\s/) # optional 5
       Message.create!(body: message_body,
                       inbox: inbox,
                       # user_id: rand(1..User.count)
@@ -44,4 +46,4 @@ puts '. All Ok!'
 puts "Created #{User.count} unique users."
 puts "Created #{Inbox.count} unique inboxes."
 puts "Created #{Message.count} unique messages."
-puts '[Admin] admin@example.com:password' # optional 4
+puts '[Admin] admin@example.com:password' # optional 6
