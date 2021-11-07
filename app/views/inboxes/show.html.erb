@@ -11,4 +11,6 @@
   <%= render 'inboxes/messages/form', message: Message.new %>
 </div>
 
-<%= render partial: 'inboxes/messages/message', collection: @inbox.messages %>
+<div id="message_list">
+  <%= render partial: 'inboxes/messages/message', collection: @inbox.messages %>
+</div>

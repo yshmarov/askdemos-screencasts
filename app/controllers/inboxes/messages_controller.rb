@@ -25,7 +25,10 @@ module Inboxes
              turbo_stream.update('new_message',
                                  partial: 'inboxes/messages/form',
                                  locals: { message: Message.new }),
-             turbo_stream.update('message_counter', @inbox.messages_count)
+             turbo_stream.update('message_counter', @inbox.messages_count),
+             turbo_stream.prepend('message_list',
+                                  partial: 'inboxes/messages/message',
+                                  locals: { message: @message })
             ]
           end
           format.html { redirect_to @inbox, notice: 'Message was successfully created.' }
