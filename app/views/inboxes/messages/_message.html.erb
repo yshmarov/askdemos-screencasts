@@ -1,6 +1,17 @@
 <div id="<%= dom_id message %>" class="scaffold_record">
   <%= simple_format(message.body) %>
 
+  <b>
+    <%= message.status %>
+    <%= status_color(message.status) %>
+    <% Message.statuses.keys.each do |status| %>
+      <%= button_to status.capitalize,
+                    change_status_inbox_message_path(@inbox, message, status: status), method: :patch %>
+    <% end %>
+  </b>
+
+  <hr>
+
   <%= button_to 'Upvote',
                 [:upvote, @inbox, message],
                 method: :patch %>
