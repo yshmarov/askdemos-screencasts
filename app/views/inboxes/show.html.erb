@@ -2,7 +2,9 @@
 
 <h1>
   Messages:
-  <%= @inbox.messages_count %>
+  <span id="message_counter">
+    <%= @inbox.messages_count %>
+  </span>
 </h1>
 
 <div id="new_message">
