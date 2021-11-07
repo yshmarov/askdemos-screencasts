@@ -5,8 +5,17 @@ module Inboxes
     def change_status
       @message = @inbox.messages.find(params[:id])
       @message.update(status: params[:status])
-      flash[:notice] = "Status for message #{@message.id}: #{@message.status}"
-      redirect_to @inbox
+      flash.now[:notice] = "Status for message #{@message.id}: #{@message.status}"
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: [
+            render_turbo_flash,
+            turbo_stream.replace(@message,
+                                 partial: 'inboxes/messages/message',
+                                 locals: { message: @message })
+          ]
+        end
+      end
     end
 
     def upvote
