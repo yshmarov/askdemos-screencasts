@@ -1,5 +1,7 @@
 <div id="flash">
   <% flash.each do |key, value| %>
-    <%= content_tag :div, value, id: "#{key}" %>
+    <div data-controller="autohide">
+      <%= content_tag :div, value, id: "#{key}" %>
+    </div>
   <% end %>
 </div>
