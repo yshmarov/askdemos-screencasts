@@ -3,13 +3,16 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.color_field :theme_color %>
-
     <%= form.text_field :name,
                         autocomplete: 'off',
                         # style: 'width:100%;',
                         style: 'width:100%; padding:5px 10px;',
                         maxlength: Inbox::MAX_NAME %>
+  </div>
+
+  <div class="field">
+    <%= form.label :theme_color %>
+    <%= form.color_field :theme_color %>
   </div>
 
   <div class="actions">
