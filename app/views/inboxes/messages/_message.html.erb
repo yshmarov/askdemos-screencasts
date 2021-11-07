@@ -1,14 +1,5 @@
 <div id="<%= dom_id message %>" class="scaffold_record">
-  <%= message.id %>
-  <p>
-    <strong>Body:</strong>
-    <%= simple_format(message.body) %>
-  </p>
-
-  <p>
-    <strong>Inbox:</strong>
-    <%= link_to message.inbox.name, message.inbox %>
-  </p>
+  <%= simple_format(message.body) %>
 
   <%= button_to 'Upvote',
                 [:upvote, @inbox, message],
@@ -20,11 +11,13 @@
   <%= message.cached_weighted_score %>
   <%= message.cached_weighted_total %>
   <%= message.cached_weighted_average %>
-
-  <p>
-    <strong>User:</strong>
+  <br>
+  <i>
+    by
     <%= message.user.email %>
-  </p>
+    on
+    <%= message.created_at.strftime('%d/%b/%Y, %H:%M') %>
+  </i>
 
   <%= button_to "Destroy", inbox_message_path(@inbox, message), method: :delete %>
 </div>
