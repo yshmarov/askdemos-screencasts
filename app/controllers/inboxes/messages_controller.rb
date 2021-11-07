@@ -49,12 +49,7 @@ module Inboxes
       @message = @inbox.messages.find(params[:id])
       @message.destroy
       respond_to do |format|
-        format.turbo_stream do
-          render turbo_stream: [
-            turbo_stream.remove(@message),
-            turbo_stream.update('message_counter', @inbox.messages_count),
-          ]
-        end
+        format.turbo_stream
         format.html { redirect_to @inbox, notice: 'Message was successfully destroyed.' }
       end
     end
