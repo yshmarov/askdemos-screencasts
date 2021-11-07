@@ -11,6 +11,10 @@
                           description: 'Vote on lists or create your own list',
                           keywords: 'qna, feedback',
                           reverse: true %>
+
+    <% if Rails.env.production? %>
+      <script defer data-domain="askdemos.com" src="https://plausible.io/js/plausible.js"></script>
+    <% end %>
   </head>
 
   <body>
