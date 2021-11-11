@@ -4,6 +4,7 @@ class Message < ApplicationRecord
 
   MIN_BODY = 6
   MAX_BODY = 2000
+  COLOR_STATUSES = { incoming: 'grey', todo: 'orange', done: 'green', spam: 'red' }
 
   validates :body, presence: true
   # validates :body, uniqueness: { scope: :inbox_id }
