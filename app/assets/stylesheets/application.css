@@ -53,3 +53,20 @@ a { text-decoration: none; }
   margin-bottom: 6px;
   word-break: break-word;
 }
+
+// Flash styled
+.flash-alert,
+.flash-notice {
+  margin: 20px auto;
+  color: white;
+  background: crimson;
+  padding: 10px;
+  text-align: center;
+  -webkit-transition: 1s opacity;
+  transition: 1s opacity;
+  opacity: 1;
+}
+
+.flash-notice {
+  background: cornflowerblue;
+}
