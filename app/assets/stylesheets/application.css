@@ -20,6 +20,19 @@ body {
   display: block;
 }
 
+.navbar {
+  min-height: 6rem;
+}
+
+footer {
+  margin-top: 22px;
+  min-height: 4rem;
+}
+.container {
+  min-height: calc(100vh - 14rem);
+  /* background: aliceblue; */
+}
+
 #notice {
   background-color: green;
   color: white;
@@ -52,4 +65,21 @@ a { text-decoration: none; }
   padding: 6px;
   margin-bottom: 6px;
   word-break: break-word;
+}
+
+// Flash styled
+.flash-alert,
+.flash-notice {
+  margin: 20px auto;
+  color: white;
+  background: crimson;
+  padding: 10px;
+  text-align: center;
+  -webkit-transition: 1s opacity;
+  transition: 1s opacity;
+  opacity: 1;
+}
+
+.flash-notice {
+  background: cornflowerblue;
 }
