@@ -1,16 +1,17 @@
 <div id="<%= dom_id message %>"
-     class="scaffold_record">
+     class="scaffold_record"
+     style="border-left-color: <%= status_color(message.status) %>; border-left-width: 8px;">
 
-  <div class="title-color" style="padding: 10px; background-color:<%= status_color(message.status) %>;">
+  <div class="title-color" style="padding: 10px;">
     <%= simple_format(message.body) %>
   </div>
 
-  &nbsp;<strong><%= message.status %></strong>
+  &nbsp;&nbsp;<strong><%= message.status %></strong>
     <div class="form-group" style='margin: 10px 5px; display: flex;'>
       <% Message.statuses.keys.each do |status| %>
         <%= button_to status.capitalize,
           change_status_inbox_message_path(@inbox, message, status: status),
-          method: :patch, style: 'margin: 0 3px;' %>
+          method: :patch, style: 'margin: 0 3px;', disabled: message.status == status %>
       <% end %>
     </div>
   <hr>
