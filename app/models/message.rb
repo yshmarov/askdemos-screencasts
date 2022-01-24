@@ -2,7 +2,7 @@ class Message < ApplicationRecord
   belongs_to :inbox, counter_cache: true
   belongs_to :user
 
-  STATUS_COLORS = { incoming: 'grey', todo: 'orange', done: 'green', spam: 'red' }
+  STATUS_COLORS = { incoming: 'grey', todo: 'orange', done: 'green', spam: 'red' }.freeze
 
   MIN_BODY = 6
   MAX_BODY = 2000
@@ -25,6 +25,14 @@ class Message < ApplicationRecord
       unvote_by user, vote_scope: 'like'
     else
       upvote_by user, vote_scope: 'like'
+    end
+  end
+
+  def downvote!(user)
+    if user.voted_down_on? self, vote_scope: 'like'
+      unvote_by user, vote_scope: 'like'
+    else
+      downvote_by user, vote_scope: 'like'
     end
   end
 end

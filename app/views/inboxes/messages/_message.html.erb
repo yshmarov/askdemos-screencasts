@@ -14,21 +14,19 @@
   </b>
 
   <hr>
-
-  <%= button_to [:upvote, @inbox, message], method: :patch do %>
-    <% if current_user.voted_up_on? message, vote_scope: 'like' %>
-      UN-vote
-    <% else %>
-      UP-vote
-    <% end %>
+  <%= button_to [:vote, @inbox, message], params: { type: :upvote }, method: :patch do %>
+    <%= upvote_label(message, current_user) %>
   <% end %>
-  <%= message.cached_votes_total %>
-  <%= message.cached_votes_score %>
-  <%= message.cached_votes_up %>
-  <%= message.cached_votes_down %>
-  <%= message.cached_weighted_score %>
-  <%= message.cached_weighted_total %>
-  <%= message.cached_weighted_average %>
+  <%= button_to [:vote, @inbox, message], params: { type: :downvote }, method: :patch do %>
+    <%= downvote_label(message, current_user) %>
+  <% end %>
+  <%= message.cached_scoped_like_votes_total %>
+  <%= message.cached_scoped_like_votes_score %>
+  <%= message.cached_scoped_like_votes_up %>
+  <%= message.cached_scoped_like_votes_down %>
+  <%= message.cached_weighted_like_score %>
+  <%= message.cached_weighted_like_total %>
+  <%= message.cached_weighted_like_average %>
   <br>
   <i>
     by

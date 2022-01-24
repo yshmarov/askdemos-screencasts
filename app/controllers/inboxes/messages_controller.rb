@@ -1,7 +1,7 @@
 module Inboxes
   class MessagesController < ApplicationController
     before_action :set_inbox
-    before_action :set_message, only: %i[change_status upvote]
+    before_action :set_message, only: %i[change_status vote]
 
     def change_status
       @message.update(status: params[:status])
@@ -18,9 +18,16 @@ module Inboxes
       end
     end
 
-    def upvote
-      flash.now[:notice] = 'Voted!'
-      @message.upvote! current_user
+    def vote
+      return unless %w[upvote downvote].include?(params[:type])
+
+      case params[:type]
+      when 'upvote'
+        @message.upvote! current_user
+      when 'downvote'
+        @message.downvote! current_user
+      end
+      flash.now[:notice] = params[:type]
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: [

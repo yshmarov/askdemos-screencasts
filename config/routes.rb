@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :inboxes do
     resources :messages, only: %i[create destroy], module: :inboxes do
       member do
-        patch :upvote
+        patch :vote
         patch :change_status
       end
     end
